@@ -811,7 +811,7 @@ async def popat(_,CallbackQuery):
         return
 
 
-@Client.on_message(command(["playplaylist", "playplaylist@synxrobot"]) & other_filters)
+@app.on_message(filters.command("playplaylist"))
 async def play_playlist_cmd(_, message):
     thumb ="cache/playlist.png"
     user_id = message.from_user.id
