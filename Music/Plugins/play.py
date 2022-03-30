@@ -164,22 +164,22 @@ async def music_onoff(_, message: Message):
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
-            f"**✅ Music Telah Di Diaktifkan Di {message.chat.title}**"
+            f"**Music Has Been Enabled In {message.chat.title}**"
         )
 
     elif status in ("OFF", "off", "Off"):
         lel = await message.reply("`processing...`")
 
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("» **Music Di Nonaktifkan.**")
+            await lel.edit("» **Music Disabled.**")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
-            f"**✅ Music Telah Di Nonaktifkan Di {message.chat.title}**"
+            f"**Music Has Been Disabled In {message.chat.title}**"
         )
     else:
         await message.reply_text(
-            "**• Penggunaan:**\n\n `/music on` & `/music off`"
+            "**• Usage:**\n\n /music on & /music off"
         )
 
 
@@ -189,14 +189,14 @@ async def play(_, message: Message):
     if message.sender_chat:
         return await message.reply_text(
             """
-Anda adalah Admin Anonim!
-Kembalikan kembali ke Akun Pengguna Dari Hak Admin.
+You are an Anonymous Admin!
+Revert back to User Account From Admin Rights.
 """
         )
     global useer
     if chat_id in DISABLED_GROUPS:
         return await message.reply_text(
-            f"😕 **Maap {message.from_user.mention}, Musicnya Dimatiin Sama Admin**" 
+            f"**Sorry {message.from_user.mention}, The music is turned off by the admin**" 
         )
         return
     user_id = message.from_user.id
@@ -207,46 +207,45 @@ Kembalikan kembali ke Akun Pengguna Dari Hak Admin.
         LOG_ID = "-100156899495"
         if int(chat_id) != int(LOG_ID):
             return await message.reply_text(
-                f"Bot sedang dalam proses peng Updatean. Maaf untuk ketidaknyamanannya!"
+                f"The bot is in the process of being updated. Sorry for the inconvenience!"
             )
         return await message.reply_text(
-            f"Bot sedang dalam Pemeliharaan. Maaf untuk ketidaknyamanannya!"
+            f"Bot is under Maintenance. Sorry for the inconvenience!"
         )
     a = await app.get_chat_member(message.chat.id, BOT_ID)
     if a.status != "administrator":
         await message.reply_text(
             """
-Saya perlu menjadi admin dengan beberapa izin:
+I need to be an admin with some permissions:
 
-- **dapat mengelola obrolan suara:** Untuk mengelola obrolan suara
-- **dapat menghapus pesan:** Untuk menghapus Sampah yang Dicari Musik
-- **dapat mengundang pengguna**: Untuk mengundang asisten untuk mengobrol
-- **dapat membatasi anggota**: Untuk Melindungi Musik dari Spam.
+- **can manage voice chat:** To manage voice chat
+- **can delete messages:** To delete Music Searched Junk
+- **can invite users**: To invite assistant to join
 """
         )
         return
     if not a.can_manage_voice_chats:
         await message.reply_text(
             "Saya tidak memiliki izin yang diperlukan untuk melakukan tindakan ini."
-            + "\n❌ MENGELOLA OBROLAN SUARA"
+            + "\n MANAGING VOICE CHATS"
         )
         return
     if not a.can_delete_messages:
         await message.reply_text(
             "Saya tidak memiliki izin yang diperlukan untuk melakukan tindakan ini."
-            + "\n❌ HAPUS PESAN"
+            + "\n DELETE MESSAGE"
         )
         return
     if not a.can_invite_users:
         await message.reply_text(
             "I don't have the required permission to perform this action."
-            + "\n❌ UNDANG PENGGUNA MELALUI LINK"
+            + "\n INVITE USERS THROUGH THE LINK"
         )
         return
     if not a.can_restrict_members:
         await message.reply_text(
             "Saya tidak memiliki izin yang diperlukan untuk melakukan tindakan ini."
-            + "\n❌ BAN PENGGUNA"
+            + "\n BAN USER"
         )
         return
     try: 
@@ -258,7 +257,7 @@ Saya perlu menjadi admin dengan beberapa izin:
                 kontol = (invite_link.replace("+", "")).split("t.me/")[1]
                 link_bokep = f"https://t.me/joinchat/{kontol}"
             await ASS_ACC.join_chat(link_bokep)
-            await message.reply(f"{ASSNAME} Berhasil Bergabung",) 
+            await message.reply(f"{ASSNAME} Successfully Joined",) 
             await remove_active_chat(chat_id)
     except UserNotParticipant:
         try:
@@ -267,15 +266,15 @@ Saya perlu menjadi admin dengan beberapa izin:
                 kontol = (invite_link.replace("+", "")).split("t.me/")[1]
                 link_bokep = f"https://t.me/joinchat/{kontol}"
             await ASS_ACC.join_chat(link_bokep)
-            await message.reply(f"{ASSNAME} Berhasil Bergabung",) 
+            await message.reply(f"{ASSNAME} Successfully Joined",) 
             await remove_active_chat(chat_id)
         except UserAlreadyParticipant:
             pass
         except Exception as e:
             return await message.reply_text(
                     f"""
-**Asisten Gagal Bergabung**
-**Alasan**:{e}
+**Assistant Failed to Join**
+**Reason**:{e}
 """
                 )
     except UserAlreadyParticipant:
@@ -283,8 +282,8 @@ Saya perlu menjadi admin dengan beberapa izin:
     except Exception as e:
         return await message.reply_text(
                     f"""
-**Asisten Gagal Bergabung**
-**Alasan**:{e}
+**Assistant Failed to Join**
+**Reason**:{e}
 """
             )
     audio = (
@@ -299,19 +298,19 @@ Saya perlu menjadi admin dengan beberapa izin:
         what = "Audio Searched"
         await LOG_CHAT(message, what)
         mystic = await message.reply_text(
-            f"**🔄 Memproses Audio Yang Diberikan Oleh {username}**"
+            f"**🔄 Processing Audio Provided By {username}**"
         )
         if audio.file_size > 157286400:
-            await mystic.edit_text("Ukuran File Audio Harus Kurang dari 150 mb")
+            await mystic.edit_text("Audio File Size Must Be Less Than 150 mb")
             return
         duration = round(audio.duration / 60)
         if duration > DURATION_LIMIT:
             return await mystic.edit_text(
                 f"""
-**Kesalahan Durasi**
+**Duration Error**
 
-**Durasi yang Diizinkan: **{DURATION_LIMIT}
-**Durasi yang Diterima:** {duration}
+**Allowed Duration: **{DURATION_LIMIT}
+**Accepted Duration:** {duration}
 """
             )
         file_name = (
@@ -329,7 +328,7 @@ Saya perlu menjadi admin dengan beberapa izin:
             if (not path.isfile(file_name))
             else file_name,
         )
-        title = "Audio Yang Dipilih Dari Telegram"
+        title = "Selected Audio From Telegram"
         link = "https://t.me/NastyProject"
         thumb = "cache/Audio.png"
         videoid = "smex1"
@@ -351,22 +350,22 @@ Saya perlu menjadi admin dengan beberapa izin:
                 videoid = result["id"]
         except Exception as e:
             return await mystic.edit_text(
-                f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
+                f"Song Not Found.\n**Possible Reason:** {e}"
             )
         smex = int(time_to_seconds(duration))
         if smex > DURATION_LIMIT:
             return await mystic.edit_text(
                 f"""
-**Kesalahan Durasi**
+**Duration Error**
 
-**Durasi yang Diizinkan:** {DURATION_LIMIT}
-**Durasi yang Diterima:** {duration}
+**Allowed Duration:** {DURATION_LIMIT}
+**Accepted Duration:** {duration}
 """
             )
         if duration == "None":
-            return await mystic.edit_text("Maaf! Video langsung tidak Didukung")
+            return await mystic.edit_text("Sorry! Live video is not Supported")
         if views == "None":
-            return await mystic.edit_text("Maaf! Video langsung tidak Didukung")
+            return await mystic.edit_text("Sorry! Live video is not Supported")
         semxbabes = f"Downloading {title[:50]}"
         await mystic.edit(semxbabes)
         theme = random.choice(themes)
@@ -450,14 +449,14 @@ Saya perlu menjadi admin dengan beberapa izin:
             buttons = playlist_markup(user_name, user_id)
             hmo = await message.reply_photo(
             photo=thumb, 
-            caption=("**Penggunaan:** /play [nama musik atau tautan youtube atau balas audio]\n\njika Anda ingin memutar daftar putar! Pilih yang dari bawah."),    
+            caption=("**Usage:** /play [music name or youtube link or reply audio]\n\nif you want to play playlist! Choose the one from below."),    
             reply_markup=InlineKeyboardMarkup(buttons),
             )
             return
         what = "Query Given"
         await LOG_CHAT(message, what)
         query = message.text.split(None, 1)[1]
-        mystic = await message.reply_text("**🔎 Pencarian**")
+        mystic = await message.reply_text("**🔎 Searching song**")
         try:
             a = VideosSearch(query, limit=5)
             result = (a.result()).get("result")
@@ -478,7 +477,7 @@ Saya perlu menjadi admin dengan beberapa izin:
             ID5 = result[4]["id"]
         except Exception as e:
             return await mystic.edit_text(
-                f"Lagu Tidak Ditemukan.\n**Kemungkinan Alasan:** {e}"
+                f"Song Not Found.\n**Possible Reason:** {e}"
             )
         thumb ="cache/IMG_20211230_211518_897.jpg"
         await mystic.delete()
