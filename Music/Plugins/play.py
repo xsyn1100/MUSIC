@@ -519,13 +519,11 @@ Saya perlu menjadi admin dengan beberapa izin:
         await message.reply_photo(
             photo=thumb,
             caption=f"""
-<b>💡 Trek ditambahkan ke antrian</b>
+<b>💡 Trek ditambahkan ke antrian</b> 
 
 <b>🏷️ Nama: [{title[:25]}]({link})</b>
-<b>⏱️ Durasi:</b> {duration} \n
+<b>🕰 Durasi:</b> {duration} \n
 <b>🎧 Atas permintaan: </b>{checking}
-
-<b>#️⃣ Posisi antrian</b> {position}
 """,
             reply_markup=InlineKeyboardMarkup(buttons),
         )
@@ -561,7 +559,7 @@ Saya perlu menjadi admin dengan beberapa izin:
             reply_markup=InlineKeyboardMarkup(buttons),
             caption=f"""
 <b>🏷 Nama:</b> [{title[:25]}]({link})
-<b>⏱️ Durasi:</b> {duration}
+<b>🕰 Durasi:</b> {duration}
 <b>🎧 Atas permintaan:</b> {checking}
 """,
         )
@@ -713,11 +711,8 @@ async def startyuplay(_, CallbackQuery):
 <b>💡 Trek ditambahkan ke antrian</b>
 
 <b>🏷 Nama:</b>[{title[:25]}]({url})
-<b>⏱️ Durasi:</b> {duration}
-<b>💡</b> [More Information](https://t.me/{BOT_USERNAME}?start=info_{id})
+<b>🕰 Durasi:</b> {duration}
 <b>🎧 Atas permintaan:</b> {checking}
-
-<b>#️⃣ Posisi antrian</b> {position}
 """,
             reply_markup=InlineKeyboardMarkup(buttons),
         )
@@ -742,8 +737,7 @@ async def startyuplay(_, CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
             caption=f"""
 <b>🏷 Nama:</b> [{title[:25]}]({url})
-<b>⏱️ Durasi:</b> {duration}
-<b>💡</b> [More Information](https://t.me/{BOT_USERNAME}?start=info_{id})
+<b>🕰 Durasi:</b> {duration}
 <b>🎧 Atas permintaan:</b> {checking}
 """,
         )
@@ -803,31 +797,30 @@ async def popat(_,CallbackQuery):
     if i == 1:
         buttons = search_markup2(ID6, ID7, ID8, ID9, ID10, duration6, duration7, duration8, duration9, duration10 ,user_id, query)
         await CallbackQuery.edit_message_text(
-            f"**✨ Silahkan pilih lagu yang ingin anda putar**\n\n⁶ <b>{title6}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID6})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁷ <b>{title7}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID7})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁸ <b>{title8}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID8})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁹ <b>{title9}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID9})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n¹⁰ <b>{title10}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID10})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__",    
+            f"❓ Choose the results to play :\n\n6️⃣ <b>[{title6[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n7️⃣ <b>[{title7[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n8️⃣ <b>[{title8[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n9️⃣ <b>[{title9[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n🔟 <b>[{title10[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__",    
             reply_markup=InlineKeyboardMarkup(buttons),
             disable_web_page_preview=True
-        )  
+        )
         return    
     if i == 2:
         buttons = search_markup(ID1, ID2, ID3, ID4, ID5, duration1, duration2, duration3, duration4, duration5, user_id, query)
         await CallbackQuery.edit_message_text(
-            f"**✨ Silahkan pilih lagu yang ingin anda putar**\n\n¹ <b>{title1}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n² <b>{title2}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID2})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n³ <b>{title3}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID3})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁴ <b>{title4}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID4})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__\n\n⁵ <b>{title5}</b>\n  ┗ 💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID5})__</u>\n  ┗ ⚡ __Powered by {BOT_NAME}__",    
+            f"❓ Choose the results to play :\n\n1️⃣ <b>[{title1[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n2️⃣ <b>[{title2[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n3️⃣ <b>[{title3[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n4️⃣ <b>[{title4[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__\n\n5️⃣ <b>[{title5[:30]}...]({url})</b>\n  ├  💡 <u>__[More Information](https://t.me/{BOT_USERNAME}?start=info_{ID1})__</u>\n  └ ⚡ __Powered by sʏɴ ʀᴏʙᴏᴛ__",    
             reply_markup=InlineKeyboardMarkup(buttons),
-            disable_web_page_preview=True 
-        )  
+            disable_web_page_preview=True
+        )
         return
-            
 
 
-@app.on_message(filters.command("playplaylist"))
+@Client.on_message(command(["playplaylist", "playplaylist@synxrobot"]) & other_filters)
 async def play_playlist_cmd(_, message):
-    thumb ="cache/IMG_20211230_211509_034.jpg"
+    thumb ="cache/playlist.png"
     user_id = message.from_user.id
     user_name = message.from_user.first_name
     buttons = playlist_markup(user_name, user_id)
     await message.reply_photo(
     photo=thumb, 
-    caption=("**__Music's Playlist Feature__**\n\nSelect the Playlist you want to play!."),    
+    caption=("**❓ Which playlist do you want to play ?**"),    
     reply_markup=InlineKeyboardMarkup(buttons),
     )
     return
