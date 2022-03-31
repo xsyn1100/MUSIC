@@ -20,7 +20,6 @@ def play_markup(videoid, user_id):
 
 def others_markup(videoid, user_id):
     buttons = [
-        buttons= [
             [
                 InlineKeyboardButton(text="▶️", callback_data=f'resumevc2'),
                 InlineKeyboardButton(text="⏸️", callback_data=f'pausevc2'),
