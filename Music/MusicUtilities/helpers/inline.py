@@ -81,7 +81,7 @@ def search_markup(
     user_id,
     query,
 ):
-buttons= [
+    buttons= [
             [
                 InlineKeyboardButton(text="1️⃣", callback_data=f'Music2 {ID1}|{duration1}|{user_id}'),
                 InlineKeyboardButton(text="2️⃣", callback_data=f'Music2 {ID2}|{duration2}|{user_id}'),
