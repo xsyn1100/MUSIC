@@ -13,38 +13,32 @@ def play_markup(videoid, user_id):
         [
                 InlineKeyboardButton(text="♪ Menu", callback_data=f'other {videoid}|{user_id}'),      
                 InlineKeyboardButton(text="🗑 Close", callback_data=f'close2')
-        ]
+        ],
     ]
     return buttons
 
 
 def others_markup(videoid, user_id):
     buttons = [
-        [
-            InlineKeyboardButton(text="▷", callback_data=f"resumevc2"),
-            InlineKeyboardButton(text="II", callback_data=f"pausevc2"),
-            InlineKeyboardButton(text="‣‣I", callback_data=f"skipvc2"),
-            InlineKeyboardButton(text="▢", callback_data=f"stopvc2"),
-        ],
-        [
-            InlineKeyboardButton(text="➕ ᴀᴅᴅ ʏᴏᴜʀ ʟɪsᴛ​", callback_data=f'playlist {videoid}|{user_id}'),
-            InlineKeyboardButton(text="➕ ᴀᴅᴅ ɢʀᴏᴜᴘ ʟɪsᴛ​", callback_data=f'group_playlist {videoid}|{user_id}'),
-        ],
-        [
-            InlineKeyboardButton(
-                text="⇩ ᴜɴᴅᴜʜ ᴀᴜᴅɪᴏ", callback_data=f"gets audio|{videoid}|{user_id}"
-            ),
-            InlineKeyboardButton(
-                text="⇩ ᴜɴᴅᴜʜ ᴠɪᴅᴇᴏ", callback_data=f"gets video|{videoid}|{user_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="⪻", callback_data=f"goback {videoid}|{user_id}"
-            ),
-            InlineKeyboardButton(text="ᴛᴜᴛᴜᴘ", callback_data=f"close2"),
-        ],
-    ]
+        buttons= [
+            [
+                InlineKeyboardButton(text="▶️", callback_data=f'resumevc2'),
+                InlineKeyboardButton(text="⏸️", callback_data=f'pausevc2'),
+                InlineKeyboardButton(text="⏭️", callback_data=f'skipvc2'),
+                InlineKeyboardButton(text="⏹️", callback_data=f'stopvc2')
+            ],
+            [
+                InlineKeyboardButton(text="Your Playlist", callback_data=f'playlist {videoid}|{user_id}'),
+                InlineKeyboardButton(text="Group Playlist", callback_data=f'group_playlist {videoid}|{user_id}')
+            ],
+            [
+                InlineKeyboardButton(text="Get Audio", callback_data=f'gets audio|{videoid}|{user_id}'),
+                InlineKeyboardButton(text="Get Video", callback_data=f'gets video|{videoid}|{user_id}')
+            ],
+            [
+                InlineKeyboardButton(text="🔙 Go Back", callback_data=f'goback {videoid}|{user_id}')
+            ],
+        ]
     return buttons
 
 
